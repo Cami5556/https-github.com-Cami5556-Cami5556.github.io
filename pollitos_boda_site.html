@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pollitos de la Boda</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive;
+      background-color: #fff8f0;
+      text-align: center;
+      color: #444;
+    }
+    h1 {
+      margin-top: 20px;
+      color: #e69c9f;
+    }
+    .pollitos-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 30px;
+    }
+    .pollito {
+      border: 2px dashed #e0c0c0;
+      margin: 10px;
+      border-radius: 20px;
+      padding: 15px;
+      width: 160px;
+      background-color: #fff;
+    }
+    .pollito img {
+      width: 100px;
+      height: 100px;
+    }
+    .pollito-name {
+      font-size: 1.1em;
+      font-weight: bold;
+      margin: 10px 0 5px 0;
+    }
+    .pollito-heart {
+      margin: 5px 0;
+      font-size: 1.2em;
+    }
+    .pollito-accessory {
+      font-size: 0.9em;
+      color: #888;
+    }
+    .pollito-link {
+      display: block;
+      margin-top: 10px;
+      color: #e69c9f;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>💕 Conoce a los 90 Pollitos de la Boda 💕</h1>
+  <div class="pollitos-container" id="pollitos-container">
+    <!-- Pollitos se generan aquí por JavaScript -->
+  </div>
+  <script>
+    const colors = ["red", "green", "blue"];
+    const accessories = ["Sombrerito", "Gafas", "Moño", "Bufanda", "Pompón", "Flores", "Brillos"];
+    const names = [...Array(90)].map((_, i) => `Pollito${i + 1}`);
+
+    function randomFromArray(arr) {
+      return arr[Math.floor(Math.random() * arr.length)];
+    }
+
+    const container = document.getElementById('pollitos-container');
+
+    names.forEach((name, i) => {
+      const color = colors[i % 3];
+      const accessory = randomFromArray(accessories);
+      const pollito = document.createElement('div');
+      pollito.className = 'pollito';
+
+      pollito.innerHTML = `
+        <img src="https://pollitos-amigurumi.github.io/images/pollito-${color}.png" alt="${name}">
+        <div class="pollito-name">${name}</div>
+        <div class="pollito-heart">❤️ Corazón ${color}</div>
+        <div class="pollito-accessory">Accesorio: ${accessory}</div>
+        <a class="pollito-link" href="https://pollitos-amigurumi.github.io/pollito/${name.toLowerCase()}">
+          Ver perfil
+        </a>
+      `;
+      container.appendChild(pollito);
+    });
+  </script>
+</body>
+</html>
